@@ -2,11 +2,11 @@
 // @name        JobNimbus Upload RoofR Button
 // @match       *://webappui.jobnimbus.com/*
 // @grant       GM_xmlhttpRequest
-// @version     1.0.0 build 2501221139
+// @version     1.0.0 build 2501221143
 // @author      Syntask
 // @description Adds a button to upload a RoofR report
-// @downloadURL  https://raw.githubusercontent.com/syntask/userscripts/main/Scripts/jobnimbus-upload-roofr-button.user.js
-// @updateURL    https://raw.githubusercontent.com/syntask/userscripts/main/Scripts/jobnimbus-upload-roofr-button.user.js
+// @downloadURL https://raw.githubusercontent.com/syntask/userscripts/main/Scripts/jobnimbus-upload-roofr-button.user.js
+// @updateURL   https://raw.githubusercontent.com/syntask/userscripts/main/Scripts/jobnimbus-upload-roofr-button.user.js
 // ==/UserScript==
 
 // Build 202501221129
