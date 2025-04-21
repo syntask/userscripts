@@ -63,8 +63,8 @@ const observer = new MutationObserver(() => {
                 const contact = data[0];
                 const addressURLcomponent = encodeURIComponent(contact.AddressLine1 + ",+" + contact.City + ",+" + contact.StateText + "+" + contact.Zip);
                 const GMAPS_PRIVATE_KEY = "AIzaSyBP1a0tgc3DPtAtlasSPtRyZdeGAuzMjv8"
-                const satelliteImg = "https://maps.googleapis.com/maps/api/staticmap?center=" + addressURLcomponent + "&zoom=20&size=400x400&maptype=satellite&key=" + GMAPS_PRIVATE_KEY;
-                const streetviewImg = "https://maps.googleapis.com/maps/api/streetview?size=400x400&location=" + addressURLcomponent + "&fov=60&key=" + GMAPS_PRIVATE_KEY;
+                const satelliteImg = "https://maps.googleapis.com/maps/api/staticmap?center=" + addressURLcomponent + "&zoom=20&size=2000x1000&maptype=satellite&key=" + GMAPS_PRIVATE_KEY;
+                const streetviewImg = "https://maps.googleapis.com/maps/api/streetview?size=640x640&location=" + addressURLcomponent + "&fov=90&key=" + GMAPS_PRIVATE_KEY;
                 console.log("Updated contact data: ", contact);
                 console.log("Generated satellite image URL: ", satelliteImg);
 
@@ -72,22 +72,36 @@ const observer = new MutationObserver(() => {
                 const styleTag = document.createElement('style');
                 styleTag.setAttribute('data-jobnimbus-style', 'true');
                 styleTag.innerHTML = `
-                  #PanelAddContact1 div div div.left img {
-                    content: url(${streetviewImg}) !important;
-                    height: 200px !important;
-                    width: 200px !important;
-                    object-fit: cover !important;
-                    margin-bottom: 10px !important;
-                    border: 1px solid #ccc !important;
-                  }
+                    #windowUpdateContactViewData {
+                    background: url(${streetviewImg});
+                    background-size: cover;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    border-radius: 16px 16px 8px 8px;
+                    margin: 0px 16px;
+                    }
+                
+                    #PanelAddContact1{
+                        background: linear-gradient(0deg,rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0));
+                        backdrop-filter: blur(2px);
+                        border: none !important;
+                        border-radius: 16px 16px 8px 8px !important;
+                        padding: 24px;
+                    }
 
-                  #PanelAddContact1 div div div.left img:hover {
-                    content: url(${satelliteImg}) !important;
-                  }
+                    #PanelAddContact1 div div div.left img {
+                        display: none;
+                    }
 
-                  #PanelAddContact1 .width100 {
-                    padding-top: 6px !important;
-                  }
+                    #PanelAddContact1 div div div.left_with_20leftmargin:has(> span.span_big_title) {
+                        margin-top: 180px;
+                        margin-left: 0;
+                    }
+
+                    span.span_subheader {
+                    color: #000;
+                    }
+
                 `;
 
                 document.head.appendChild(styleTag);
